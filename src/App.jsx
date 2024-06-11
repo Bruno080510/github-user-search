@@ -5,6 +5,7 @@ function App(){
   const [nome, setNome] = useState(null)
   const [user, setUser] = useState()
   const [botao, setBotao] = useState()
+  const [repository, setRepository] = useState()
 
 
   function ler (e){
@@ -18,9 +19,15 @@ function App(){
     .then((json) => setUser(json))
   },[botao])
 
+  useEffect(()=>{
+    fetch(`https://api.github.com/users/${nome}/repos`)
+    .then((res) => res.json())
+    .then((json) => setRepository(json))
+  },[botao])
+
 
   return(
-    <div  className=" bg-slate-950 flex flex-col  justify-center items-center py-16 h-screen">
+    <div  className=" bg-slate-950 flex flex-col w-full  justify-center items-center py-16 h-full">
       <h1 className=" text-4xl pb-3 text-white font-semibold">Github Search</h1>
       <div className=" bg-violet-700 w-[40rem] h-full rounded-2xl  text-center justify-center">
         <div className="p-9 flex-col">
@@ -38,6 +45,9 @@ function App(){
               </div>
             </div>
           )}
+          {repository &&(repository.map((repo) => (
+              <h1>{repo.name}</h1>
+          )))}
       </div>
     </div>
   )
