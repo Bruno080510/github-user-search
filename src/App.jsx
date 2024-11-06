@@ -45,8 +45,8 @@ function App(){
               </div>
               <h1 className="text-lg text-white font-bold">Nome: {user.name}</h1>
               <div className="flex px-5">
-                <h1 className="text-lg text-white font-bold">Followers: {user.followers} - </h1>
-                <h1 className="text-lg text-white font-bold"> - Following: {user.following}</h1>
+                <h1 className="text-lg text-white font-bold pe-4">Followers: {user.followers}  </h1>
+                <h1 className="text-lg text-white font-bold">  Following: {user.following}</h1>
               </div>
               <h1>{user.email}</h1>
             </div>
